@@ -16,7 +16,7 @@ contract Assignment6Test is Test {
         vm.expectEmit(true, true, false, true);
         emit Assignment6.FundsDeposited(address(this), 1 ether);
         assignment.deposit{value: 1 ether}();
-        uint balance = assignment.balances(address(this));
+        uint balance = assignment.balance(address(this));
         assertEq(balance, 1 ether, "Balance should be 1 ether");
     }
 
@@ -26,7 +26,7 @@ contract Assignment6Test is Test {
         vm.expectEmit(true, true, false, true); // Match receiver and amount
         emit Assignment6.FundsWithdrawn(address(this), 0.5 ether);
         assignment.withdraw(0.5 ether);
-        uint balance = assignment.balances(address(this));
+        uint balance = assignment.balance(address(this));
         assertEq(balance, 0.5 ether, "Balance should be 0.5 ether");
     }
 
